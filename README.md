@@ -10,6 +10,9 @@ For example, this library will translate **zhang1** to **zhāng** (pinyin) or **
 
 這個函式庫的原始邏輯設計出自以 Golang 編寫，因為本人需要用在[字典百科](https://zh.dictpedia.org)專案中，但尋無以 PHP 版本實現的注音轉拼音、拼音轉注音的函式庫，所以我把它從 Golang 改寫成 PHP 版本。
 
+ * 此PHP 版與 Golang 原版的差別是捨棄字串陣列，分別讀取個別字元進去陣列以避免可能的 UTF-8字元問題
+ * 原始邏輯已經處理的很好了，所以直接移植為 PHP 版本。只加了一個函式 splitString 來處理個別 UTF-8 字元
+
 ## Install
 
 ```
