@@ -8,14 +8,61 @@ The original idea is from a Golang library written by **Bomin Zhang**, I recodin
 
 For example, this library will translate **zhang1** to **zhāng** (pinyin) or **ㄓㄤ** (zhuyin), **zhāng** or **ㄓㄤ** decode to **zhang1**, and also support **pinyin to zhuyin** and **zhuyin to pinyin**.
 
+## Install
+
+```
+composer require dictpedia/zhuyin-pinyin
+```
+
 ## Usage
 
-* ecodePinyin: **zhang1** to **zhāng**
-* decodePinyin: **zhāng** to **zhang1**
-* encodeZhuyin: **zhang1** to **ㄓㄤ**
-* decodeZhuyin: **ㄓㄤ** to **zhang1**
-* pinyinToZhuyin: **zhāng** to **ㄓㄤ**
-* zhuyinToPinyin: **ㄓㄤ** to **zhāng**
+```php
+$zh = new \DictPedia\ZhuyinPinyin();
+```
+
+## API
+
+###ecodePinyin###
+```php
+echo $zh->ecodePinyin('zhang1');
+
+// result: ㄓㄤ
+```
+
+###decodePinyin###
+```php
+echo $zh->decodePinyin('zhāng');
+
+// result: zhang1
+```
+
+###encodeZhuyin###
+```php
+echo $zh->encodeZhuyin('zhang1');
+
+// result: ㄓㄤ
+```
+
+###decodeZhuyin###
+```php
+echo $zh->decodeZhuyin('ㄓㄤ');
+
+// result: zhang1
+```
+
+###pinyinToZhuyin###
+```php
+echo $zh->pinyinToZhuyin('zhāng');
+
+// result: ㄓㄤ
+```
+
+###zhuyinToPinyin###
+```php
+echo $zh->zhuyinToPinyin('ㄓㄤ');
+
+// result: zhāng
+``` 
 
 # 注音拼音互轉
 
