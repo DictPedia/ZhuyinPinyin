@@ -4,6 +4,7 @@
     "keywords": ["nosql", "redis", "predis"],
     "homepage": "https://github.com/DictPedia/ZhuyinPinyin",
     "license": "MIT",
+    "version": "1.0",
     "authors": [
         {
             "name": "Terry Lin",
