@@ -1,7 +1,7 @@
 {
     "name": "dictpedia/zhuyin-pinyin",
     "description": "A PHP library that deals with Zhuyin to Pinyin and Pinyin to Zhuyin.",
-    "keywords": ["nosql", "redis", "predis"],
+    "keywords": ["zhuyin", "pinyin", "chinese", "php"],
     "homepage": "https://github.com/DictPedia/ZhuyinPinyin",
     "license": "MIT",
     "version": "1.0",
