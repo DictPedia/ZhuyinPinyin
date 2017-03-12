@@ -17,7 +17,7 @@ class ZhuyinPinyin {
     var $map_z2p;
     var $map_p2z;
     var $pinyin_tones;
-    var $zhyuin_tones;
+    var $zhuyin_tones;
 
     /**
      * ZhuPin constructor.
@@ -44,7 +44,7 @@ class ZhuyinPinyin {
             "ao": "ㄠ", "ou": "ㄡ", "iu": "一ㄡ",
             "an": "ㄢ", "en": "ㄣ", "in": "一ㄣ",
             "ang": "ㄤ", "eng": "ㄥ", "ing": "一ㄥ",
-            "ong": "ㄨㄥ", "ie": "一ㄝ", "er": "ㄦ",
+            "ong": "ㄨㄥ", "ie": "一ㄝ", "r": "ㄦ",
             "ue": "ㄩㄝ", "ve": "ㄩㄝ",
             "un": "ㄨㄣ", "vn": "ㄩㄣ", "ia": "一ㄚ",
             "ua": "ㄨㄚ", "uan": "ㄨㄢ", "van": "ㄩㄢ",
@@ -67,7 +67,7 @@ class ZhuyinPinyin {
             '
             "ㄚ": "a", "ㄛ": "o", "ㄜ": "e", "ㄝ": "e",
             "一": "i", "ㄨ": "u", "ㄩ": "v",
-            "ㄞ": "ai", "ㄟ": "ei", "ㄦ": "er",
+            "ㄞ": "ai", "ㄟ": "ei", "ㄦ": "r",
             "ㄠ": "ao", "ㄡ": "ou",
             "ㄢ": "an", "ㄣ": "en",
             "ㄤ": "ang", "ㄥ": "eng",
@@ -451,6 +451,8 @@ class ZhuyinPinyin {
      */
     private function _encodeZhuyin($consonant, $rhymes, $tone)
     {
+
+
         if (mb_strlen($rhymes) == 0) {
             return '';
         }
@@ -506,8 +508,8 @@ class ZhuyinPinyin {
             }
             unset($ok);
         }
-
-        return $consonant . $rhymes . $this->zhyuin_tones[$tone];
+        
+        return $consonant . $rhymes . $this->zhuyin_tones[$tone];
     }
 
 
