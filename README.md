@@ -32,7 +32,7 @@ Resutn empty string if the input string is invaild.
 ```php
 echo $zh->encodePinyin('zhang1');
 
-// result: ㄓㄤ
+// result: zhāng
 ```
 
 ###decodePinyin###
