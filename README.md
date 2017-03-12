@@ -28,9 +28,9 @@ Resutn empty string if the input string is invaild.
 
 ## API
 
-###ecodePinyin###
+###encodePinyin###
 ```php
-echo $zh->ecodePinyin('zhang1');
+echo $zh->encodePinyin('zhang1');
 
 // result: ㄓㄤ
 ```
