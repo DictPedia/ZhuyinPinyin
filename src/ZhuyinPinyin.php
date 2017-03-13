@@ -44,7 +44,7 @@ class ZhuyinPinyin {
             "ao": "ㄠ", "ou": "ㄡ", "iu": "一ㄡ",
             "an": "ㄢ", "en": "ㄣ", "in": "一ㄣ",
             "ang": "ㄤ", "eng": "ㄥ", "ing": "一ㄥ",
-            "ong": "ㄨㄥ", "ie": "一ㄝ", "r": "ㄦ",
+            "ong": "ㄨㄥ", "ie": "一ㄝ", "er": "ㄦ",
             "ue": "ㄩㄝ", "ve": "ㄩㄝ",
             "un": "ㄨㄣ", "vn": "ㄩㄣ", "ia": "一ㄚ",
             "ua": "ㄨㄚ", "uan": "ㄨㄢ", "van": "ㄩㄢ",
@@ -67,7 +67,7 @@ class ZhuyinPinyin {
             '
             "ㄚ": "a", "ㄛ": "o", "ㄜ": "e", "ㄝ": "e",
             "一": "i", "ㄨ": "u", "ㄩ": "v",
-            "ㄞ": "ai", "ㄟ": "ei", "ㄦ": "r",
+            "ㄞ": "ai", "ㄟ": "ei", "ㄦ": "er",
             "ㄠ": "ao", "ㄡ": "ou",
             "ㄢ": "an", "ㄣ": "en",
             "ㄤ": "ang", "ㄥ": "eng",
@@ -100,7 +100,7 @@ class ZhuyinPinyin {
             "",
             "ˊ",
             "ˇ",
-            "ˋ"
+            "ˋ",
         ];
     }
 
@@ -180,7 +180,58 @@ class ZhuyinPinyin {
      */
     public function split($s)
     {
+        $s_len = mb_strlen($s);
+
         $ss = $this->splitString($s);
+        
+        // Begin - Exception: 兒 
+
+        if ($s_len >= 2) {
+
+            $exception = $ss[0] . $ss[1];
+
+            if ($exception == 'er') {
+                if ($s_len == 3) {
+                    $tone = $ss[2];
+                } else {
+                    $tone = 0;
+                }
+                return ['', $exception, $tone];
+            }
+
+            $exception = $ss[0];
+
+            if ($exception == 'r') {
+                if ($s_len == 2) {
+                    $tone = $ss[1];
+
+                    if ($tone >= 5) {
+                        $tone = 0;
+                    }
+                }
+
+                if ($s_len == 1) {
+                    $tone = 0;
+                }
+                return ['', 'er', $tone];
+            }
+        }
+
+        if ($s_len == 1) {
+            $exception = $ss[0];
+
+            if ($exception == 'r') {
+                if (mb_strlen($s) == 2) {
+                    $tone = str_replace('0', '', $ss[1]);
+                } else {
+                    $tone = 0;
+                }
+                return ['', $exception, $tone];
+            }
+        }
+        
+        // End - Exception
+
 
         $i = 0;
 
@@ -220,6 +271,7 @@ class ZhuyinPinyin {
                 return ['', '', 0];
             }
         }
+
 
         return [$consonant, $rhymes, $tone];
     }
@@ -508,7 +560,9 @@ class ZhuyinPinyin {
             }
             unset($ok);
         }
-        
+
+        echo 'x:' . $tone . "\n";
+
         return $consonant . $rhymes . $this->zhuyin_tones[$tone];
     }
 
@@ -685,7 +739,6 @@ class ZhuyinPinyin {
         return $this->_encodeZhuyin($consonant, $rhymes, $tone);
     }
 
-
     /**
      * @param $s
      * @return string
@@ -706,9 +759,7 @@ class ZhuyinPinyin {
         return $this->_encodePinyin($consonant, $rhymes, $tone);
     }
 
-
     private function splitString($str) {
         return preg_split('//u', $str, -1, PREG_SPLIT_NO_EMPTY);
     }
-
 }
