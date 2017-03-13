@@ -73,3 +73,5 @@ echo $zh->zhuyinToPinyin('ㄓㄤ');
 ## License
 
 MIT
+
+https://packagist.org/packages/dictpedia/zhuyin-pinyin
