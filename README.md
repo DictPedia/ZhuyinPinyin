@@ -28,42 +28,42 @@ Resutn empty string if the input string is invaild.
 
 ## API
 
-###encodePinyin###
+### encodePinyin
 ```php
 echo $zh->encodePinyin('zhang1');
 
 // result: zhāng
 ```
 
-###decodePinyin###
+### decodePinyin
 ```php
 echo $zh->decodePinyin('zhāng');
 
 // result: zhang1
 ```
 
-###encodeZhuyin###
+### encodeZhuyin
 ```php
 echo $zh->encodeZhuyin('zhang1');
 
 // result: ㄓㄤ
 ```
 
-###decodeZhuyin###
+### decodeZhuyin
 ```php
 echo $zh->decodeZhuyin('ㄓㄤ');
 
 // result: zhang1
 ```
 
-###pinyinToZhuyin###
+### pinyinToZhuyin
 ```php
 echo $zh->pinyinToZhuyin('zhāng');
 
 // result: ㄓㄤ
 ```
 
-###zhuyinToPinyin###
+### zhuyinToPinyin
 ```php
 echo $zh->zhuyinToPinyin('ㄓㄤ');
 
